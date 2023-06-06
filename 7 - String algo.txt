@@ -33,11 +33,20 @@ representations of the characters right.)
 * What is the probability that two different strings of 
 length m hash to the same integer?
 
+    m/p, so p is usually chosen to be a large prime such that the chances are lower. by using modulo, the result can be anywhere between 1 and p, so larger p gives more possibilities.
 
 
 * What is an efficient way to compute the coefficients 
 a^{i} for i in {0, ..., m - 1}?
 
+    by creating an array where the values are [a^0 mod p, a^1 mod p, ..., a^m-1 mod p].
+    the efficiency comes by calculating each value using the previous value, since every new value simply adds another a.
+    we construct an array d where d[k] = a^k mod p:
+        d[0] = 1
+        d[k] = (d[k − 1] * a) mod p
+
 
 
 * Discuss: How can dvaput be solved using string hashing?
+
+    since the string has to be repeated, start from half the length of the string and compute the hash of the first half - store this hash. then go one character forward at a time (rolling) and compare, checking if the initial hash is ever found. if not, use binary search and half the length and check if a repeated substring exists. if so, check if a substring exists of length halfway between first and second attempt etc. return longest length substring found.

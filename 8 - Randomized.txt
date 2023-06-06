@@ -1,0 +1,13 @@
+* Given a binary string x of length d, how do you choose a MinHash hash h function and what is the hash value h(x)?
+
+    randomise the positions of every element in string x. then the first 1 in this new permutation of bitstring x is the minhash value h(x).
+    so for string 01001, if its random permutation is 23140 (00110), then the minhash is 1. this permutation (23140) can then be used for other bitstrings to put into "buckets" that have the same minhash.
+
+
+* Given two strings x and y with Jaccard similarity J(x,y), what is the probability that x and y hash to the same value?
+
+    it's equal to the jaccard similarity, since jaccard = (# 1s in common)/(total positions that have a 1 in either).
+
+* How do you build a data structure to find a correlated pair using MinHash?
+
+    you hash with multiple different permutations. assume you want to find strings that have at least x elements in common. then you look for a pair by finding a binary string that landed in all the same buckets (got all the same minhashes) as the first string and check if there are at least x many of the same elements. if not, redo the whole process and hash with a different set of permutations.
