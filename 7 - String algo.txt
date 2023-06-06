@@ -1,0 +1,43 @@
+* Describe: How do you solve Bing using a trie. Which augmentations do you need to apply to a standard trie?
+
+    one solution is to add a count field to every node. this allows for constant lookup time for finding the the number of children the node has. whenever the recursive insert method goes down that node to add a new child somewhere down its tree, the count is increased by 1.
+
+
+* Describe: How does string hashing compute the hash 
+code of a string. What is the role of a and p?
+
+    a simple way would be to compute:
+    x[0] + x[1] + ... + x[m-1]
+    
+    this can result in string "abcd" and string "dcba" giving same hash value tho, so we add weight to position of every character like so:
+    x[0] * a^(m-1) + x[1] * a^(m-2) * ... * x[m-1] * a^0
+    here a can be any constant.
+
+    this can result in very very big result if string is long and possibly integer overflow, so we modulo by a number p to make result smaller
+    (x[0] * a^(m-1) + x[1] * a^(m-2) * ... * x[m-1] * a^0) mod p
+
+    by making p a mersenne prime number, computing the modulo is faster since it can be done using bit fuckery (dunno if i'm expected to know how exactly lol)
+
+
+* Let's say a is 11 and p is 37. How does the 
+polynomial for the string "APS" look like? (no 
+evaluation, not important to get the ordinal 
+representations of the characters right.)
+
+    ( 'A' * 11^(3-1) * 'P' * 11^(3-2) * 'S' * 11^(3-3) ) mod 37 =
+    (65 * 11^2 * 80 * 11 * 83 * 1) mod 37 =
+    574459600 mod 37 =
+    5
+
+
+* What is the probability that two different strings of 
+length m hash to the same integer?
+
+
+
+* What is an efficient way to compute the coefficients 
+a^{i} for i in {0, ..., m - 1}?
+
+
+
+* Discuss: How can dvaput be solved using string hashing?
