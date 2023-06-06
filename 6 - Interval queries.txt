@@ -1,0 +1,47 @@
+* Given an array of integers, e.g., [2, 8, 12, 1, 23, 56, 3, 10], and for the operations min or sum, (i) build a sparse table with two blocks and (ii) build a segment tree. Carry out a query for two positions, e.g., (3, 5) in the respective data structures. Update the value of an element and carry out the query again.
+
+
+    for sum: 
+    (i. sparse table):
+        length = 8, go with sqrt 9 = 3 for block size
+        so [2,8,12] [1,23,56] [3,10]
+        each block is summed [22] [80] [13]
+        for every block keep track of the sum (or min element) of that block.
+        to update, simply update the element at the index and update the summed block element.
+
+    (ii. segment tree):
+    int sum(int a, int b) {
+        a += n; b += n;
+        int s = 0;
+        while (a <= b) {
+            if (a%2 == 1) s += tree[a++];
+            if (b%2 == 0) s += tree[b--];
+            a /= 2; b /= 2;
+        }
+        return s;
+    }
+                            115
+                    23              92
+                10      13      79      13
+               2  8    12 1    23 56   3 10
+    
+    so (3,5) = 1+79 = 80
+
+
+* Given an array of integers build a Fenwick tree from it. What is the meaning of the operation i & -i? Which operations are supported by the Fenwick tree? Show how to compute the sum of an interval. Why does it make sense that the array is 1-indexed?
+
+    i &- i gets the range of responsibility for integer i, the amount of integers summed together that the entry at index i represents.
+    fenwick tree can only do range sum and update element, both in o(log(n)) time.
+    fenwick tree is 1-indexed because it makes the (i & -i) operation possible, calculating least significant bit.
+
+
+* For all three data structures (Sparse Table, Segment Tree, Fenwick Tree), how long does it take to build the array representation for a given array? How long does a query take? How long does a single update take?
+
+    building all of them should be O(n).
+    query and update for sparse table is (o sqrt(n)), since that's the size of the blocks
+    the other two trees take o(log(n)).
+
+
+* How do you solve Supercomputer and Frosh Week using a Segment or Fenwick tree?
+
+    supercomputer can be solved using a standard segment tree, where all elements are initialised to 0.

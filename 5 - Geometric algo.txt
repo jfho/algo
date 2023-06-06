@@ -1,0 +1,25 @@
+* Define: Given a set of points in the plane, what is their convex hull?
+    
+    convex hull is the smallest convex polygon that contains all points of a given set.
+    basically means for all the points, the smallest area where any line made between two ends of the polygon are within the polygon.
+
+
+* Describe the sweepline algorithm to find a convex hull.
+
+    first, sort all points on the x axis and sort every point there on the y axis, min to max.
+    go from left to right and add one point at a time to the set of points so far
+
+
+* What is the running time of the algorithm? Why?
+
+
+
+* In the sweep line algorithm, it is important to find out if a line turns "left/right". How do you do this algorithmically?
+
+
+
+* Given a polygon defined by a sequence of points, how do you compute its area?
+
+
+
+* How do you solve witchdance?

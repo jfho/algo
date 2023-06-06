@@ -1,0 +1,43 @@
+* Describe 2 techniques to enumerate all subsets of the set 1, ..., n.
+    
+    by using recursion:
+        def search1(subset, k, n):
+            if k == n:
+                # process subset
+                print(subset)
+            else:
+                search1(subset, k + 1, n) # do not take element k in the subset
+                subset.append(k)
+                search1(subset, k + 1, n) # take element k in the subset
+                subset.pop()
+
+            search1([], 0, n)
+    
+    here we check all subsets, either adding or not adding an element which gives a running time of 2**n
+
+    since it's 2**n we can also represent the choices using binary and go thru all the bit representations
+
+
+* How do you solve Geppetto using complete search?
+    
+    do complete search, but for every element added check if it creates a forbidden pair with a prev element. if so, return immediately and dont go further down that branch.
+
+
+* How do you solve the n x n-queens problem using backtracking?
+    
+    a backtracking algorithm begins with an empty solution and extends the solution step by step. 
+    for every row, place a queen on each square in that row if placing a queen on that square is valid. if not, return and dont explore the branch further, otherwise add a queen in every square on the next row and check if position is valid etc.
+
+
+* How does the general outline of a greedy algorithm look like?
+    
+    greedy algorithms tend to go thru every element, picking the "best element" at every step so linear-ish algorithm usually.
+
+    Running time: Usually "O(sorting time)", i.e., O(n log n).
+
+    S is the empty solution
+    Order the input elements in a certain way, e.g., by "contribution to a solution"
+    Go through input elements one by one:
+    If adding current element to S is a valid solution, add it
+    Otherwise skip it
+    Return S
