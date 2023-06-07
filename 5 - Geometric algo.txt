@@ -7,19 +7,26 @@
 * Describe the sweepline algorithm to find a convex hull.
 
     first, sort all points on the x axis and sort every point there on the y axis, min to max.
-    go from left to right and add one point at a time to the set of points so far
+    to construct upper: go from left to right and add one point at a time to the set of points so far. at every step, make sure the last 3 points don't make a left turn. if they do, remove the second-last point repeatedly until they dont (use cross product a x b calculated using x1 y2 − x2 y1, where b turns left if result is above 0, right if less than 0).
 
 
 * What is the running time of the algorithm? Why?
 
+    O (n log n) since the algorithm has to sort all points by x and y. after that, it goes thru every point linearly, with constant time cross product fuckery.
 
 
 * In the sweep line algorithm, it is important to find out if a line turns "left/right". How do you do this algorithmically?
 
+    store each point as a vector (x,y) and use cross product (a x b) calculated using x1 y2 − x2 y1, where b turns left if result is above 0, right if less than 0.
 
 
 * Given a polygon defined by a sequence of points, how do you compute its area?
 
+    shoelace formula:
+
+    1/2 * (sum of xi * y(i+1) - x(i+1) * yi) for i=1 to i=n-1
 
 
 * How do you solve witchdance?
+
+    

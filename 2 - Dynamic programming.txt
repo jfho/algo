@@ -1,0 +1,20 @@
+* Explain: How do you find the n-th Fibonacci number using dynamic programming? How does memoization work in this case?
+
+    make a recursive function fib(n) as well as a hashmap<n, result>. make the first step in the recursive function to lookup n in the hashmap.
+
+
+* Why does the greedy algorithm not work for the Exact Change problem?
+
+    it works because all larger coins are divisible by all smaller coins. if we have coins 1,6,10 then for input 12 we will do 10+1+1 when 6+6 is better.
+
+
+* How would you solve the problem Knapsack using Dynamic programming?
+
+    sort by value per unit, then take the most valuable down to the least valuable
+
+
+* Describe: What is the difference between an iterative and a recursive implementation of a DP algorithm?
+
+    an iterative solution starts bottom up instead of top down. this helps because you can often get away with storing less, for example O(1) space for fibonacci solution rather than O(n). 
+    
+    iterative solutions can generally be harder to come up with but are also generally faster since the algorithm doesn't have to go all the way down to the base case and then build up again, but instead starts with the base case.

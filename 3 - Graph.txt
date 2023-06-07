@@ -1,0 +1,27 @@
+* Describe different data structures to store a graph. What are the pros and cons of each data structure?
+
+    one way to store would be a matrix/2d array. this is best for directed graphs, since M[a][b] could be 1 (that is, there exists an edge a->b) but M[b][a] could be 0 (so no edge b->a). this could also make adding weights easy, since M[a][b] would simply be the weight of the edge from a to b.
+
+    alternative could be having a hashmap<node, set<nodes>> (or list of set of nodes if nodes are integers from 0 to n). here, each node only has to have its neighbours in their set, so traversing all a nodes neighbours will be faster assuming many vertices and few edges. con is that it might take more memory/space, esp if each node is an object that stores a lot of information.
+
+* Given an undirected/directed graph, carry out DFS from a starting node.
+
+    dfs uses stack
+
+
+* Carry out BFS on a given directed/undirected graph from a starting node.
+
+    bfs uses queue
+
+
+* What is the running time of DFS and BFS?
+
+    O(m + n), assuming they only go through their neighbours and not every node at every step of the algorithm.
+
+
+* Define: What is a topological sorting of a directed graph? How do you find one using DFS?
+
+    
+
+
+* Describe a kattis problem that can be solved by computing a topological sort.

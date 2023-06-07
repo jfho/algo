@@ -41,3 +41,13 @@
     If adding current element to S is a valid solution, add it
     Otherwise skip it
     Return S
+
+
+* Describe the greedy algorithm for the coin exchange problem. What is its running time? Describe the central step in the correctness argument ("It's never wrong to take the largest coin that is at most as large as the current value")
+
+    at every step, take the biggest coin. go to the remainder, then take the biggest coin there. the running time depends, if we have to sort n coins then this takes O (n log n). if not, then the running time depends on the smallest coin possible (if 1, O(n + total) otherwise O(n + total/c) where c is the smallest coin).
+
+
+* Describe the greedy algorithm for Task Scheduling. What is its running time?
+
+    the greedy algorithm for task scheduling always picks the task that ends the soonest. this is because if any other task were chosen, you would be missing out on tasks, since you could've been done sooner. running time is O(n log n) assuming we first have to sort the tasks.
